@@ -5,6 +5,13 @@
 -/
 variable {α : Type} [Ord α]
 
+def Array.minimum? (arr : Array α) : Option α :=
+  match arr.data with
+  | [] => none
+  | [x] => some x
+  | x :: y :: xs =>
+    sorry
+
 /-- 配列 `arr` が与えられたとき, `arr[i]` から `arr` の最後尾までの部分のうち
 最小の要素 `arr[min]` を探し，それを `arr[i]` と交換する -/
 def selectionSortLoop (arr : Array α) (i : Fin arr.size) : Array α :=
@@ -12,3 +19,5 @@ def selectionSortLoop (arr : Array α) (i : Fin arr.size) : Array α :=
     arr
   else
     sorry
+
+#check Array

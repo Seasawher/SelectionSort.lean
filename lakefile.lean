@@ -1,7 +1,7 @@
 import Lake
 open Lake DSL
 
-package «SelectionSort» where
+package SelectionSort where
   -- add package configuration options here
   leanOptions := #[
     ⟨`autoImplicit, false⟩,
@@ -12,5 +12,6 @@ require mathlib from git
   "https://github.com/leanprover-community/mathlib4.git" @ s!"v{Lean.versionString}"
 
 @[default_target]
-lean_lib «SelectionSort» where
+lean_lib SelectionSort where
   -- add library configuration options here
+  globs := #[.submodules `SelectionSort]
