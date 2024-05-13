@@ -9,7 +9,7 @@ package SelectionSort where
   ]
 
 require mathlib from git
-  "https://github.com/leanprover-community/mathlib4.git" @ "v4.8.0-rc1"
+  "https://github.com/leanprover-community/mathlib4.git" @ s!"v{Lean.versionString}"
 
 @[default_target]
 lean_lib SelectionSort where
