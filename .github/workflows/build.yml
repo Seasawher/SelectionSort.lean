@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"] # replace "main" with the default branch
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: leanprover/lean-action@v1-alpha
+        with:
+          # don't run `lake test`
+          test: false
