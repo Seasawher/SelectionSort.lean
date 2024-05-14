@@ -5,19 +5,18 @@ on:
   push:
     branches:
       - main
-
+  workflow_dispatch:
+  
 jobs:
   update_lean:
     runs-on: ubuntu-latest
     permissions:
       issues: write         # required to create issues
       pull-requests: write  # required to create pull requests
-      contents: write       # required to commit to the repo
     steps:
+      - uses: actions/checkout@v4
       - name: Update Lean project
-        uses: oliver-butterley/lean-update-action@v1-alpha
+        uses: oliver-butterley/lean-update-action@v1-alpha.3
         with:
-          #  Allowed values: "silent", "commit", "issue" or "pr". Default: "commit".
           on_update_succeeds: pr
-          # Allowed values: "silent", "issue" or "fail". Default: "issue".
           on_update_fails: issue
