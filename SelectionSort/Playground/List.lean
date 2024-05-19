@@ -49,6 +49,14 @@ def selection_sort (l : List α) : List α :=
   match h : min_first l with
   | [] => []
   | μ :: rest =>
+    have _nnil : l ≠ [] := by
+      simp only [ne_eq]
+      rw [← min_first_iff_nil l]
+      intro nil
+      simp [nil] at h
+    have _hμ : μ = l.head (by assumption) := by
+      sorry
+
     -- lemma for termination
     have _decrease : l.length > rest.length := calc
       l.length = (min_first l).length := by rw [min_first_length l]
