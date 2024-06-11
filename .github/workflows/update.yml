@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Update Lean project
-        uses: oliver-butterley/lean-update-action@v1-alpha.3
+        uses: oliver-butterley/lean-update-action@v1-alpha
         with:
           on_update_succeeds: pr
           on_update_fails: issue
