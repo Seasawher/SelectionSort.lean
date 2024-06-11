@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: leanprover/lean-action@v1-alpha
+      - uses: leanprover/lean-action@v1-beta
         with:
           # don't run `lake test`
           test: false
