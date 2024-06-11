@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: checkout
+        uses: actions/checkout@v4
       - uses: leanprover/lean-action@v1-alpha
         with:
           # don't run `lake test`
