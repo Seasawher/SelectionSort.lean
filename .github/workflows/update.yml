@@ -10,6 +10,7 @@ jobs:
     permissions:
       issues: write         # required to create issues
       pull-requests: write  # required to create pull requests
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Update Lean project
