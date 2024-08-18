@@ -45,6 +45,7 @@ theorem perm_selection_sort (l : List α) : l ~ selection_sort l := by
     have rlen : rest.length = n := by
       convert List.length_erase_of_mem mem
       simp only [ih, Nat.pred_succ]
+      omega
 
     have hr : selection_sort rest ~ rest := by
       exact Perm.symm (IH rest rlen)
@@ -79,8 +80,7 @@ theorem sorted_selection_sort (l : List α) : Sorted (· ≤ ·) l.selection_sor
     · show ∀ (b : α), b ∈ selection_sort rest → minimum l ≤ ↑b
       intro b hb
       exact minimum_le_of_mem' (subh hb)
-    · show Sorted (· ≤ ·) (selection_sort rest)
-      apply IH rest
+    · apply IH rest
 
       have mem : μ ∈ l := by
         apply minimum_mem
@@ -88,3 +88,4 @@ theorem sorted_selection_sort (l : List α) : Sorted (· ≤ ·) l.selection_sor
 
       convert List.length_erase_of_mem mem
       simp only [ih, Nat.pred_succ]
+      omega
