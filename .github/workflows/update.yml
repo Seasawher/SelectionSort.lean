@@ -18,3 +18,4 @@ jobs:
         with:
           on_update_succeeds: issue
           on_update_fails: issue
+          what_to_update: lean-toolchain
