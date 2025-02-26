@@ -1,7 +1,7 @@
 name: Update Lean
 on:
-  schedule:
-    - cron: "0 11 * * 4"
+  # schedule:
+  #   - cron: "0 11 * * 4"
   workflow_dispatch:
   
 jobs:
@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Update Lean project
-        uses: Seasawher/lean-update-action@main # 自前のアクションを使用する
+        uses: Seasawher/lean-update@main # 自前のアクションを使用する
         with:
           on_update_succeeds: pr
           on_update_fails: issue
