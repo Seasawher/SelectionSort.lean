@@ -16,6 +16,6 @@ jobs:
       - name: Update Lean project
         uses: Seasawher/lean-update@main # 自前のアクションを使用する
         with:
-          on_update_succeeds: issue
+          on_update_succeeds: pr
           on_update_fails: issue
           what_to_update: lean-toolchain
