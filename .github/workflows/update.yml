@@ -1,21 +1,15 @@
 name: Update Lean
 on:
-  # schedule:
-  #   - cron: "0 11 * * 4"
+  schedule:
+    - cron: "0 11 * * 4"
   workflow_dispatch:
   
 jobs:
   update_lean:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write         # required to create issues
-      pull-requests: write  # required to create pull requests
-      contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Update Lean project
         uses: Seasawher/lean-update@main # 自前のアクションを使用する
         with:
-          on_update_succeeds: pr
-          on_update_fails: issue
-          what_to_update: lean-toolchain
+          update_if_modified: lean-toolchain
