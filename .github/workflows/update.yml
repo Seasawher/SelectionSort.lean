@@ -16,7 +16,7 @@ jobs:
           update_if_modified: lean-toolchain
 
       - name: Zulip Notifycation
-        if: steps.lean-update.outputs.result == 'update-succeeds'
+        if: steps.lean-update.outputs.result == 'update-success'
         uses: zulip/github-actions-zulip/send-message@v1
         with:
           api-key: ${{ secrets.ZULIP_API_KEY }}
