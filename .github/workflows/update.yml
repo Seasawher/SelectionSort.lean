@@ -1,28 +1,17 @@
-name: Update Lean
+name: Update Lean Project
+
 on:
-  # schedule:
-  #   - cron: "0 11 * * 4"
-  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *" # every day
+  workflow_dispatch: # allows workflow to be triggered manually
 
 jobs:
   update_lean:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Update Lean project
-        id: lean-update
-        uses: Seasawher/lean-update@main # 自前のアクションを使用する
+        uses: Seasawher/lean-update@main
         with:
           update_if_modified: lean-toolchain
-
-      - name: Zulip Notifycation
-        if: steps.lean-update.outputs.result == 'update-success'
-        uses: zulip/github-actions-zulip/send-message@v1
-        with:
-          api-key: ${{ secrets.ZULIP_API_KEY }}
-          email: "tellagoodstory@icloud.com"
-          organization-url: 'https://leanprover.zulipchat.com'
-          to: "general"
-          type: "stream"
-          topic: "lean-action"
-          content: "zulip action test: update succeed!"
