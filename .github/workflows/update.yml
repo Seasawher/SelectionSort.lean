@@ -19,6 +19,7 @@ jobs:
           on_update_fails: "silent"
 
       - name: Send a private message
+        if: steps.lean-update.outputs.result == 'update-fail'  # only send a message when the update fails
         uses: zulip/github-actions-zulip/send-message@v1
         with:
           api-key: ${{ secrets.ZULIP_API_KEY }} # Zulip API key of your bot
