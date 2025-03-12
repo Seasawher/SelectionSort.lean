@@ -11,7 +11,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Update Lean project
+        id: lean-update
         uses: Seasawher/lean-update@main
         with:
-          update_if_modified: lean-toolchain
+          on_update_fails: "silent"
+
+      - name: Send a private message
+        uses: zulip/github-actions-zulip/send-message@v1
+        with:
+          api-key: ${{ secrets.ZULIP_API_KEY }} # Zulip API key of your bot
+          email: "lean-update-bot@leanprover.zulipchat.com"
+          organization-url: 'https://leanprover.zulipchat.com'
+          to: "626349" # user_id
+          type: "private" # private message
+          content: |
+             ❌ The update of ${{ github.repository }} has [failed](https://github.com/${{ github.repository }}/actions/runs/${{ github.event.workflow_run.id }}) ([${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})).
