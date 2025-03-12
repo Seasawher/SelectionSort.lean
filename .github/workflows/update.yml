@@ -14,7 +14,7 @@ jobs:
 
       - name: Update Lean project
         id: lean-update
-        uses: Seasawher/lean-update@main
+        uses: Seasawher/lean-update@develop
         with:
           on_update_fails: "silent"
 
