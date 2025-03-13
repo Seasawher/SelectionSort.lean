@@ -17,6 +17,7 @@ jobs:
         uses: Seasawher/lean-update@develop
         with:
           on_update_fails: "silent"
+          update_if_modified: lean-toolchain
 
       - name: Send a private message
         if: steps.lean-update.outputs.result == 'update-fail'  # only send a message when the update fails
