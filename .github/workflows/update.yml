@@ -17,6 +17,7 @@ jobs:
         uses: Seasawher/lean-update@develop
         with:
           on_update_fails: "silent"
+          on_update_succeeds: "issue"
           update_if_modified: lean-toolchain
 
       - name: Send a private message
