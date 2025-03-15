@@ -18,7 +18,7 @@ jobs:
         with:
           on_update_fails: "silent"
           on_update_succeeds: "issue"
-          # update_if_modified: lean-toolchain
+          update_if_modified: lean-toolchain
 
       - name: Send a private message
         if: steps.lean-update.outputs.result == 'update-fail'  # only send a message when the update fails
