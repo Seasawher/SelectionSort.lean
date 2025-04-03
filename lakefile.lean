@@ -6,7 +6,6 @@ package SelectionSort where
   leanOptions := #[
     ⟨`autoImplicit, false⟩,
     ⟨`relaxedAutoImplicit, false⟩,
-    ⟨`linter.flexible, true⟩
   ]
 
 require mathlib from git
