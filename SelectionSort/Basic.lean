@@ -68,7 +68,7 @@ theorem sorted_selection_sort (l : List α) : Sorted (· ≤ ·) l.selection_sor
     set rest := l.erase μ
 
     have rsub : rest ⊆ l := by
-      exact erase_subset μ l
+      exact erase_subset
 
     have rperm : selection_sort rest ~ rest := by
       exact Perm.symm (perm_selection_sort rest)
