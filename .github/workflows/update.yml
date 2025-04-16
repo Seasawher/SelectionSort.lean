@@ -15,3 +15,5 @@ jobs:
       - name: Update Lean project
         id: lean-update
         uses: Seasawher/lean-update@develop
+        with:
+          update_if_modified: lean-toolchain
