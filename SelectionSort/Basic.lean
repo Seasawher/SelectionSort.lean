@@ -32,7 +32,7 @@ theorem perm_selection_sort (l : List α) : l ~ selection_sort l := by
 
   all_goals
     unfold selection_sort
-    simp_all [ih]
+    simp_all
 
   case succ n IH =>
     set μ := minimum_of_length_pos (_ : 0 < length l)
@@ -44,7 +44,7 @@ theorem perm_selection_sort (l : List α) : l ~ selection_sort l := by
 
     have rlen : rest.length = n := by
       convert List.length_erase_of_mem mem
-      simp only [ih, Nat.pred_succ]
+      simp only [ih]
       omega
 
     have hr : selection_sort rest ~ rest := by
@@ -56,12 +56,13 @@ theorem perm_selection_sort (l : List α) : l ~ selection_sort l := by
 
     exact perm_cons_erase mem
 
-theorem sorted_selection_sort (l : List α) : Sorted (· ≤ ·) l.selection_sort := by
+theorem sorted_selection_sort (l : List α) : l.selection_sort.SortedLE := by
+  rw [List.sortedLE_iff_pairwise]
   induction' ih : l.length generalizing l
 
   all_goals
     unfold selection_sort
-    simp_all [ih]
+    simp_all
 
   case succ n IH =>
     set μ := minimum_of_length_pos (_ : 0 < length l)
@@ -87,5 +88,5 @@ theorem sorted_selection_sort (l : List α) : Sorted (· ≤ ·) l.selection_sor
         simp_all only [coe_minimum_of_length_pos, rest, μ]
 
       convert List.length_erase_of_mem mem
-      simp only [ih, Nat.pred_succ]
+      simp only [ih]
       omega
