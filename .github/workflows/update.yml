@@ -1,9 +1,19 @@
-name: Update Lean Project
-
+name: run lean-update
 on:
-  schedule:
-    - cron: "0 0 * * *" # every day
-  workflow_dispatch: # allows workflow to be triggered manually
+  # lean-update アクションのカナリアテストとして使用するため、
+  # 存在しないブランチを参照してエラーにならないよう、
+  # スケジュールによる自動実行はしない。
+  # schedule:
+  #   - cron: "0 0 * * *"
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
 
 jobs:
   update_lean:
@@ -11,9 +21,5 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
-
-      - name: Update Lean project
-        id: lean-update
-        uses: Seasawher/lean-update@develop
-        with:
-          update_if_modified: lean-toolchain
+      - name: run lean-update@rewrite-script
+        uses: leanprover-community/lean-update@rewrite-script
