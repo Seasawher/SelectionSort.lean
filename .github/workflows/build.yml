@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - uses: leanprover/lean-action@v1
         with:
           # don't run `lake test`
